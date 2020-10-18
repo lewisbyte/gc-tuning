@@ -19,13 +19,7 @@ public class GcTest {
     // 在这个测试中，测试JVM会出现频繁的老年代的GC
     // 请思考一下为什么，并调整JVM的启动参数，使得老年代GC出现（Full GC/CMS GC）的次数小于3次。
     // 请不要调整-Xms和-Xmx
-    // 默认年轻代和老年代比例 1:2
-    // 年轻代 ( Young ) 又被划分为三个区域：Eden、From Survivor、To Survivor
-    // 默认的，Eden : from : to = 8 : 1 : 1
-    // 年轻代大小是 256/3 = 85 , Eden = 68 , from = 8.5 , to = 8.5
-    // 每次申请20m内存 ， 默认比例年轻代Survivor不够会直接放进老年代导致频繁 Full GC
-    // 调整年轻代区域比例 ， Eden : from : to = 4 : 3 : 3
-    private static final String JVM_ARGS = "-Dfile.encoding=UTF-8 -Xms256m -Xmx256m -XX:InitialSurvivorRatio=4 -XX:-UseAdaptiveSizePolicy -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps";
+    private static final String JVM_ARGS = "-Dfile.encoding=UTF-8 -Xms256m -Xmx256m -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps";
 
     @Test
     public void isJava8() {
